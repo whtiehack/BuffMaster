@@ -1,0 +1,15 @@
+
+
+
+BuffMaster_ToggleShowParty(1) -- 增強顯示隊友BUFF 在小队成员头像下显示其身上的BUFF
+
+
+BuffMaster_ToggleDetailTimeLeft(1) -- 时间精确到秒
+
+
+
+BuffMaster_ToggleBuffInfo(1) -- 显示自身BUFF信息  -- 可以不用 代码挺多
+
+BuffMaster_ToggleMyBuffs(1) -- 仅显示我施放的增益
+
+

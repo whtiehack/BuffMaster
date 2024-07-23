@@ -19,10 +19,10 @@ local BuffMaster_e2834e0a7893ec83a826b8dd5c13163d = 8; local BuffMaster_7f5efba0
 local BuffMaster_cc3105e145f6df0060a4d4779ae40c0e, BuffMaster_a31fc3bbeb1eca3cba8bda3cafca137b
 local function BuffMaster_c31924e73a2e21b7c72a19121ea9200d(button, isPet)
     GameTooltip:SetOwner(button, "ANCHOR_RIGHT"); local bType
-    if BuffMaster_a31fc3bbeb1eca3cba8bda3cafca137b then 
-        bType = "PLAYER" 
-    else 
-        bType = "HELPFUL" 
+    if BuffMaster_a31fc3bbeb1eca3cba8bda3cafca137b then
+        bType = "PLAYER"
+    else
+        bType = "HELPFUL"
     end
     if isPet then
         GameTooltip:SetUnitAura("pet", button:GetID(), bType);
@@ -228,10 +228,13 @@ end };
 function BuffMaster_ToggleBuffInfo(toggle)
     if toggle == 1 then
         BuffMaster_7738894b0053175295e6fef354231fea = true;
-        if (not BuffMaster_cc3105e145f6df0060a4d4779ae40c0e) then
-            hooksecurefunc("AuraButton_UpdateDuration", BuffMaster_1a92d5dc80e48e09f7d29aaaab46094b); hooksecurefunc(
-                "AuraButton_Update", BuffMaster_81244f624fe0b105f47a78834d1c8775); hooksecurefunc(
-                "TempEnchantButton_OnUpdate", BuffMaster_cfd39af31951c0ec4dc60d7b4dd5feb4); BuffMaster_cc3105e145f6df0060a4d4779ae40c0e = true;
+        if (not BuffBuffMaster_ToggleShowPartyMaster_cc3105e145f6df0060a4d4779ae40c0e) then
+            hooksecurefunc("AuraButton_UpdateDuration", BuffMaster_1a92d5dc80e48e09f7d29aaaab46094b);
+            hooksecurefunc(
+                "AuraButton_Update", BuffMaster_81244f624fe0b105f47a78834d1c8775);
+            hooksecurefunc(
+                "TempEnchantButton_OnUpdate", BuffMaster_cfd39af31951c0ec4dc60d7b4dd5feb4);
+            BuffMaster_cc3105e145f6df0060a4d4779ae40c0e = true;
         end
     else
         BuffMaster_7738894b0053175295e6fef354231fea = nil;
@@ -246,31 +249,41 @@ function BuffMaster_ToggleDetailTimeLeft(toggle)
     end
 end
 
-function BuffMaster_ToggleMyBuffs(flags) 
-    if flags == 1 then 
-        BuffMaster_a31fc3bbeb1eca3cba8bda3cafca137b = true 
-    else 
-        BuffMaster_a31fc3bbeb1eca3cba8bda3cafca137b = false 
-    end 
+function BuffMaster_ToggleMyBuffs(flags)
+    if flags == 1 then
+        BuffMaster_a31fc3bbeb1eca3cba8bda3cafca137b = true
+    else
+        BuffMaster_a31fc3bbeb1eca3cba8bda3cafca137b = false
+    end
 end
 
 function BuffMaster_ToggleShowParty(toggle)
     if toggle == 1 then
-        BuffMaster_Eventer:RegisterEvent("GROUP_ROSTER_UPDATE", BufferMasterPartyBuffFrame_OnEvent); BuffMaster_Eventer
-            :RegisterEvent("PARTY_MEMBER_ENABLE", BufferMasterPartyBuffFrame_OnEvent); BuffMaster_Eventer:RegisterEvent(
-            "PARTY_MEMBER_DISABLE", BufferMasterPartyBuffFrame_OnEvent); BuffMaster_Eventer:RegisterEvent("UNIT_AURA",
-            BufferMasterPartyBuffFrame_OnEvent); BuffMasterparty1BuffFrame:Show(); BuffMasterparty2BuffFrame:Show(); BuffMasterparty3BuffFrame
-            :Show(); BuffMasterparty4BuffFrame:Show(); for i = 1, 4 do
-            local button = getglobal("PartyMemberFrame" .. i .. "Debuff1"); local parent = getglobal("PartyMemberFrame" ..
-                i); button:ClearAllPoints(); parent:RegisterAnchorFrame(button, 9, "TOPLEFT", "TOPRIGHT", 23, 6, 0); if (not BuffMaster_133104d326d458eda34112321a734dac) then
+        BuffMaster_Eventer:RegisterEvent("GROUP_ROSTER_UPDATE", BufferMasterPartyBuffFrame_OnEvent);
+        BuffMaster_Eventer:RegisterEvent("PARTY_MEMBER_ENABLE", BufferMasterPartyBuffFrame_OnEvent);
+        BuffMaster_Eventer:RegisterEvent(
+            "PARTY_MEMBER_DISABLE", BufferMasterPartyBuffFrame_OnEvent);
+        BuffMaster_Eventer:RegisterEvent("UNIT_AURA",
+            BufferMasterPartyBuffFrame_OnEvent);
+        BuffMasterparty1BuffFrame:Show();
+        BuffMasterparty2BuffFrame:Show();
+        BuffMasterparty3BuffFrame:Show();
+        BuffMasterparty4BuffFrame:Show();
+        for i = 1, 4 do
+            local button = getglobal("PartyMemberFrame" .. i .. "Debuff1");
+            local parent = getglobal("PartyMemberFrame" .. i);
+            button:ClearAllPoints();
+            parent:RegisterAnchorFrame(button, 9, "TOPLEFT", "TOPRIGHT", 23, 6, 0);
+            if (not BuffMaster_133104d326d458eda34112321a734dac) then
                 parent:HookScript("OnEnter", BuffMaster_4903ba6fc20fb685cdeed62d86bf1ebe);
             end
         end
         if not BuffMaster_133104d326d458eda34112321a734dac then
-            PetFrame:HookScript("OnEnter",
-                BuffMaster_4903ba6fc20fb685cdeed62d86bf1ebe);
+            PetFrame:HookScript("OnEnter", BuffMaster_4903ba6fc20fb685cdeed62d86bf1ebe);
         end
-        BuffMaster_133104d326d458eda34112321a734dac = true; BuffMaster_00d06be9b74a81db92d9a9da1a57b650 = true; BufferMasterPartyBuffFrame_RefreshAll();
+        BuffMaster_133104d326d458eda34112321a734dac = true; 
+        BuffMaster_00d06be9b74a81db92d9a9da1a57b650 = true; 
+        BufferMasterPartyBuffFrame_RefreshAll();
     else
         BuffMaster_Eventer:UnregisterEvent("GROUP_ROSTER_UPDATE"); BuffMaster_Eventer:UnregisterEvent(
             "PARTY_MEMBER_ENABLE"); BuffMaster_Eventer:UnregisterEvent("PARTY_MEMBER_DISABLE"); BuffMaster_Eventer
@@ -283,3 +296,5 @@ function BuffMaster_ToggleShowParty(toggle)
         BuffMaster_00d06be9b74a81db92d9a9da1a57b650 = nil;
     end
 end
+
+
