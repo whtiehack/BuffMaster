@@ -1,0 +1,12 @@
+{
+    "Lua.diagnostics.globals": [
+        "PetFrame",
+        "MAX_PARTY_TOOLTIP_BUFFS",
+        "PlayerFrame",
+        "PartyMemberBuffTooltip",
+        "BUFF_WARNING_TIME",
+        "BUFF_DURATION_WARNING_TIME",
+        "RED_FONT_COLOR",
+        "HIGHLIGHT_FONT_COLOR"
+    ]
+}
