@@ -297,4 +297,20 @@ function BuffMaster_ToggleShowParty(toggle)
     end
 end
 
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("ADDON_LOADED")
+frame:SetScript("OnEvent", function(self, event, name)
+    if event == "ADDON_LOADED" and name == "BuffMaster" then
+        C_Timer.After(0.1, function ()
+            BuffMaster_ToggleShowParty(1)
+        end)
+        -- 取消注册事件
+        frame:UnregisterEvent("ADDON_LOADED")
+
+        -- 释放Frame占用的资源
+        frame:SetScript("OnEvent", nil) -- 清除事件处理脚本
+        frame:Hide() -- 隐藏Frame
+        frame = nil -- 解除frame的引用
+    end
+end)
 
